@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <h1>Ласкаво просимо!</h1>
+    <p>Це домашнє завдання №17 для курсу Python.</p>
+    <hr style="border-color: #333;">
+    
+    {% if user.is_authenticated %}
+        <p style="font-size: 1.2rem;">Ви успішно увійшли в систему як <strong style="color: var(--secondary);">{{ user.username }}</strong></p>
+        {% if user.bio %}
+            <p><strong>Про себе:</strong> {{ user.bio }}</p>
+        {% endif %}
+        <p>Статус: ✅ Online</p>
+    {% else %}
+        <p>Ви не авторизовані.</p>
+        <p>Будь ласка, увійдіть або зареєструйтеся, щоб продовжити.</p>
+        <div style="margin-top: 20px;">
+            <a href="{% url 'login' %}" class="btn">Login</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
