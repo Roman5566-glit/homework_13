@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>Мої плани</h2>
+        <a href="{% url 'task_create' %}" class="btn" style="text-decoration: none;">+ Нова задача</a>
+    </div>
+
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="task-item {% if task.is_completed %}completed{% endif %}">
+                <div>
+                    <strong>{{ task.title }}</strong>
+                    <p style="margin: 0; font-size: 0.8rem;">{{ task.description }}</p>
+                </div>
+                <div class="deadline">
+                    {{ task.deadline|date:"d.m.Y H:i" }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align: center;">Задач ще немає. Створи першу!</p>
+    {% endif %}
+</div>
+{% endblock %}

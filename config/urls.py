@@ -10,4 +10,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     # Головна сторінка
     path('', home, name='home'),
+    # Шляхи додатку tasks
+    path('tasks/', include('tasks.urls')),
+
 ]

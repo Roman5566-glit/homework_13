@@ -6,7 +6,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Увійти</button>
+        <button type="submit" class="btn">Увійти</button>
     </form>
     <p style="margin-top: 15px; font-size: 0.9rem;">
         Немає акаунту? <a href="{% url 'register' %}" style="color: var(--secondary);">Зареєструватись</a>

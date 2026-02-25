@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Нова задача</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.title.id_for_label }}">Назва</label><br>
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.description.id_for_label }}">Опис</label><br>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.deadline.id_for_label }}">Дедлайн</label><br>
+            {{ form.deadline }}
+            {{ form.deadline.errors }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="{{ form.is_completed.id_for_label }}">
+                {{ form.is_completed }} Виконано
+            </label>
+        </div>
+
+        <button type="submit" class="btn">Зберегти</button>
+        <a href="{% url 'task_list' %}" class="btn" style="margin-left:10px; text-decoration:none;">Назад</a>
+    </form>
+</div>
+{% endblock %}
